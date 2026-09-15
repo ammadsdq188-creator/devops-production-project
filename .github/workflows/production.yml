@@ -82,3 +82,40 @@ jobs:
           ansible-playbook \
             -i ansible/inventory.ini \
             ansible/site.yml
+
+  kubernetes:
+    name: Kubernetes Deployment
+    needs: ansible
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::032504371978:role/GitHubActionsProductionRole
+          aws-region: us-east-1
+
+      - name: Update kubeconfig
+        run: |
+          aws eks update-kubeconfig \
+            --region us-east-1 \
+            --name devops-production-cluster
+
+      - name: Verify Kubernetes access
+        run: kubectl get nodes
+
+      - name: Deploy application
+        run: |
+          kubectl apply -f k8s/deployment.yaml
+          kubectl apply -f k8s/service.yaml
+          kubectl apply -f k8s/ingress.yaml
+
+      - name: Verify deployment
+        run: |
+          kubectl rollout status deployment/devops-production-app
+          kubectl get pods
+          kubectl get service devops-production-service
+          kubectl get ingress devops-production-ingress

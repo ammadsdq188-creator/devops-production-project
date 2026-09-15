@@ -1,0 +1,12 @@
+---
+- name: Configure production web server
+  hosts: web
+  become: true
+
+  vars:
+    website_name: "DevOps Production Server"
+    deployment_environment: "production"
+    server_name: "ansible-web-01"
+
+  roles:
+    - nginx

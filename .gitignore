@@ -1,0 +1,6 @@
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.*
+aws-load-balancer-controller-policy*.json
+aws-load-balancer-controller-trust-policy.json
+ansible/inventory.ini

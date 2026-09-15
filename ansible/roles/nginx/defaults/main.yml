@@ -1,0 +1,3 @@
+---
+# defaults file for roles/nginx
+website_name: "Production Web Server"

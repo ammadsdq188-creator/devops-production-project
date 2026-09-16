@@ -182,3 +182,29 @@ CI/CD pipelines
 AWS IAM and OIDC
 Infrastructure monitoring
 Production-style deployment workflows
+
+## Deployment Evidence
+
+### GitHub Actions
+
+The production CI/CD workflow successfully completed the Terraform, Docker, Ansible, and Kubernetes stages.
+
+![GitHub Actions](docs/screenshots/github-actions-success.png)
+
+### Amazon EKS
+
+The application infrastructure was deployed to an Amazon EKS cluster.
+
+![Amazon EKS](docs/screenshots/eks-cluster.png)
+
+### Application Deployment
+
+The application was successfully exposed through an AWS Application Load Balancer and Kubernetes Ingress.
+
+![Application](docs/screenshots/application-alb.png)
+
+### Grafana Monitoring
+
+Prometheus metrics were visualized through the Grafana monitoring dashboard.
+
+![Grafana Dashboard](docs/screenshots/grafana-dashboard.png)

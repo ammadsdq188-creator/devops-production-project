@@ -28,6 +28,8 @@ Prometheus
    ↓
 Grafana
 
+![DevOps Production Architecture](docs/architecture-diagram.png)
+
 ## Technologies Used
 
 - AWS
